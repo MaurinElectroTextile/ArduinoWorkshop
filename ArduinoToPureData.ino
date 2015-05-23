@@ -2,7 +2,6 @@
 // La transmission d'une valeur de 10 bits (0 - 1024)
 // nécessite une méthode particulière, car seul des
 // octets/bytes circulent sur la liaison série
-// ce sketche transmet deux valeurs de capteurs 10 bites
 
 ///////////// déclaration des variables
 int sensorPin_A = A0;    // sélection de la broche alogique A0
