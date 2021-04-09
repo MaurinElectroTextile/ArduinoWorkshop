@@ -1,0 +1,39 @@
+#N canvas 908 283 560 473 10;
+#X obj 138 176 xy_dac;
+#X obj 138 117 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 268 145 s all_off;
+#X obj 268 120 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 138 137 xy_all_sounds;
+#N canvas 126 631 450 336 inpout 1;
+#X obj 211 45 inlet;
+#X msg 211 127 close;
+#X msg 91 127 devices;
+#X msg 230 99 open 0;
+#X obj 211 209 comport 0 9600;
+#X obj 211 234 - 64;
+#X obj 211 71 sel 0 1;
+#X obj 211 259 outlet;
+#X connect 0 0 6 0;
+#X connect 1 0 4 0;
+#X connect 2 0 4 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 7 0;
+#X connect 6 0 1 0;
+#X connect 6 1 3 0;
+#X restore 354 144 pd inpout;
+#X obj 354 120 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 354 197 \; \$1-play \$2 \;;
+#X obj 138 93 loadbang;
+#X obj 354 173 pack f 1;
+#X connect 1 0 4 0;
+#X connect 3 0 2 0;
+#X connect 4 0 0 0;
+#X connect 4 1 0 1;
+#X connect 5 0 9 0;
+#X connect 6 0 5 0;
+#X connect 8 0 1 0;
+#X connect 9 0 7 0;
