@@ -6,12 +6,15 @@
 // Tested on 17 September 2019
 // ---------------------------------------------------------------- //
 
+const int DIST = 30;
+
 #define echoPin 2 // attach pin D2 Arduino to pin Echo of HC-SR04
 #define trigPin 3 //attach pin D3 Arduino to pin Trig of HC-SR04
 
 // defines variables
 long duration; // variable for the duration of sound wave travel
 int distance; // variable for the distance measurement
+boolean toggle = false;
 
 void setup() {
   pinMode(trigPin, OUTPUT); // Sets the trigPin as an OUTPUT
@@ -28,10 +31,22 @@ void loop() {
   digitalWrite(trigPin, LOW);
   // Reads the echoPin, returns the sound wave travel time in microseconds
   duration = pulseIn(echoPin, HIGH);
+  
   // Calculating the distance
   distance = duration * 0.034 / 2; // Speed of sound wave divided by 2 (go and back)
-  // Displays the distance on the Serial Monitor
-  Serial.print("Distance: ");
-  Serial.print(distance);
-  Serial.println(" cm");
+
+  if (distance > DIST && toggle = false) {
+    toggle = true;
+    Serial.write("A");
+  }
+  if (distance < DIST && toggle = true) {
+    toggle = false;
+    Serial.write("B");
+  }
+  /*
+    // Displays the distance on the Serial Monitor
+    Serial.print("Distance: ");
+    Serial.print(distance);
+    Serial.println(" cm");
+  */
 }
